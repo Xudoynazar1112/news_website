@@ -1,0 +1,24 @@
+{% extends 'news/base.html' %}
+{% load i18n %}
+
+{% block title %}<title>{% blocktrans %}Admin sahifasi{% endblocktrans %}</title>{% endblock title %}
+{% block content %}
+<h1>{% blocktrans %}Admin sahifasi{% endblocktrans %}</h1>
+<h3>{% blocktrans %}Barcha adminlar{% endblocktrans %}</h3>
+<table class="table table-bordered table-responsive table-striped">
+    <tr>
+        <th>{% blocktrans %}Foydalanuvchi nomi{% endblocktrans %}</th>
+        <th>{% blocktrans %}Ism{% endblocktrans %}</th>
+        <th>{% blocktrans %}Familyas{% endblocktrans %}</th>
+    </tr>
+    {% for user in admin_users %}
+    <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h3><a href="{% url 'create_page' %}" class="text-primary" style="margin-left: 30px">{% blocktrans %}Yangilik qo'shish{% endblocktrans %}</a></h3>
+
+{% endblock content %}

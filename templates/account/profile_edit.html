@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}<title>{% blocktrans %}Foydalanuvchi ma'lumotlarini o'zgartirish{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+
+<h1>{% blocktrans %}Foydalanuvchi ma'lumotlarini o'zgartirish{% endblocktrans %}</h1>
+<p>{% blocktrans %}O'zingiz haqingizdagi ma'lumotlarni quyidagi forma orqali o'zgartirishingiz mumkin{% endblocktrans %}:</p>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button type="submit">{% blocktrans %}O'zgarishlarni saqlash{% endblocktrans %}</button>
+    </form>
+
+{% endblock content %}

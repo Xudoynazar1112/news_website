@@ -1,0 +1,11 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}    <title>Logout {% blocktrans %}sahifasi{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+    <h2 class="text-center">{% blocktrans %}Veb saytdan chiqish{% endblocktrans %} - Logout</h2>
+<p>{% blocktrans %}Siz vebsaytdan chiqdingiz{% endblocktrans %} <a href="{% url 'login' %}">{% blocktrans %}Qaytadan kirish{% endblocktrans %}</a></p>
+
+{% endblock content %}

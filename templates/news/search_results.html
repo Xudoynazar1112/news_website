@@ -1,0 +1,14 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}<title>{% blocktrans %}Qidiruv natijalari{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+<h2>{% blocktrans %}Qidiruv natijalari{% endblocktrans %}</h2>
+{% for yangilik in barcha_yangiliklar %}
+<img src="{{ yangilik.image.url }}" width="30%">
+<h3> <a href="{% url 'news_detail_page' yangilik.slug %}">{{ yangilik.title }}</a></h3>
+{% endfor %}
+
+{% endblock content %}

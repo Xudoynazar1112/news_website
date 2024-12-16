@@ -1,0 +1,27 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+{% load i18n %}
+
+{% block title %}<title>{% blocktrans %}Xorij sahifa{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+
+<div class="single_post_content">
+                <h2><span>{% blocktrans %}Xorij{% endblocktrans %}</span></h2>
+                <ul class="business_catgnav wow fadeInDown">
+                  {% for xorij in xorij_yangiliklar %}
+                  <li>
+                    <figure class="bsbig_fig"> <a href="{{ xorij.get_absolute_url }}" class="featured_img"> <img alt="" src="{{ xorij.image.url }}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="{{ xorij.get_absolute_url }}">{{ xorij.title | truncatewords:5 }}</a> </figcaption>
+                      <p>{{ xorij.body | truncatewords:20 }}</p>
+                        <p>{% blocktrans %}Ko'rilganlar soni{% endblocktrans %}: <i class="fa fa-eye" aria-hidden="true"></i> {% get_hit_count for xorij %}</p>
+
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+
+              </div>
+
+{% endblock content %}

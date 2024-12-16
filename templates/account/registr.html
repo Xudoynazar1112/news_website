@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}<title>{% blocktrans %}Foydalanuvchilarni ro'yxatdan o'tkazish{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+
+<h1>{% blocktrans %}Foydalanuvchilarni ro'yxatdan o'tkazish{% endblocktrans %}</h1>
+<p>{% blocktrans %}Ro'yxatdan o'tish uchun quyidagi formani to'ldiring{% endblocktrans %}</p>
+    <form method="post">{% csrf_token %}
+        {{ user_form.as_p }}
+        <button type="submit">{% blocktrans %}Ro'yxatdan o'tish{% endblocktrans %}</button>
+    </form>
+
+{% endblock content %}

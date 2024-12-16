@@ -1,0 +1,19 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}<title>Login {% blocktrans %}sahifasi{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+
+    <h2>{% blocktrans %}Veb sahifadan ro'yhatdan o'tish{% endblocktrans %} - Login</h2>
+    <p>{% blocktrans %}Iltimos, ro'yhatdan o'tish uchun quyidagi bo'shliqlarni to'ldiring{% endblocktrans %}!</p>
+
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Login</button>
+    </form>
+<h5>{% blocktrans %}Parolingizni unutdingizmi{% endblocktrans %}? <b><i><a href="{% url 'password_reset' %}">{% blocktrans %}Unda parolingizni qayta tiklang{% endblocktrans %}!</a></i></b></h5>
+<h5>{% blocktrans %}Agar foydalanuvchi profilingiz bo'lmasa{% endblocktrans %} <b><i><a href="{% url 'user_registr' %}">{% blocktrans %}ro'yxatdan o'tishingiz{% endblocktrans %}</a></i></b> {% blocktrans %}kerak!{% endblocktrans %}</h5>
+
+{% endblock content %}

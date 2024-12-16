@@ -1,0 +1,30 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}<title>{% blocktrans %}Foydalanuvchi profili{% endblocktrans %}</title>{% endblock title %}
+
+{% block content %}
+
+<style>
+    .profile{margin-left: 30px}
+    .profile h2, h4 {text-align: center}
+    .profile input {border-radius: 7px}
+    .profile label {margin-right: 12px}
+    .profile p {text-align: center; font-size: 18px}
+</style>
+
+<div class="profile">
+    <h2>{% blocktrans %}Assalomu alaykum{% endblocktrans %} {{ user.username }}</h2>
+    <img src="{{ profile.photo.url }}" alt="Rasm topilmadi" width="30%"><br>
+    <h5>{% blocktrans %}Tug'ilgan yilingiz{% endblocktrans %}: {{ profile.date_of_birth }}</h5>
+    <label><em>{% blocktrans %}Foydalanuvchi nomi{% endblocktrans %}:</em></label> <input value="{{ user.username }}" readonly placeholder="kiritilmagan"><br>
+    <label><em>{% blocktrans %}Email{% endblocktrans %}:</em></label> <input value="{{ user.email }}" readonly placeholder="kiritilmagan"><br>
+    <label><em>{% blocktrans %}Ism{% endblocktrans %}:</em></label> <input value="{{ user.first_name }}" readonly placeholder="kiritilmagan"><br>
+    <label><em>{% blocktrans %}Familya{% endblocktrans %}:</em></label> <input value="{{ user.last_name }}" readonly placeholder="kiritilmagan"><br>
+    <h4><a href="{% url 'password_change' %}">{% blocktrans %}Parolni almashtirish{% endblocktrans %}</a> yoki <a href="{% url 'edit_user_informations' %}">{% blocktrans %}Parolni o'zgartirish{% endblocktrans %}</a></h4>
+    <hr>
+    <p><a href="{% url 'logout' %}">{% blocktrans %}Hisobdan chiqish{% endblocktrans %}</a></p>
+</div>
+
+{% endblock content %}

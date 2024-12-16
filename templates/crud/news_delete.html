@@ -1,0 +1,15 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}<title> {{ news.title }} </title>{% endblock title %}
+
+{% block content %}
+
+<h2 class="text-center">{% blocktrans %}Joriy yangilikni o'chirish{% endblocktrans %}</h2>
+<form method="post">{% csrf_token %}
+<p>"{{ news.title | truncatewords:4 }}" {% blocktrans %}sarlovhali yangilikni o'chirmoqchimisiz?{% endblocktrans %}</p>
+    <button type="submit" class="btn btn-danger ml-2">{% blocktrans %}Tasdiqlash{% endblocktrans %}</button>
+</form>
+
+{% endblock content %}
